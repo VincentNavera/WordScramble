@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var timeRemaining = 30
     @State private var timerDone = false
     @State private var showTimer = false
+    @Environment(\.colorScheme) var colorScheme
     let timer = Timer.publish(every: 1, on: .main, in: .common)
         .autoconnect()
 
@@ -32,7 +33,7 @@ struct ContentView: View {
                         })
                         Spacer()
                         Text("\(timeRemaining)")
-                            .font(.system(size: 50, design: .rounded)).foregroundColor(timeRemaining > 5 ? .black : .red)
+                            .font(.system(size: 50, design: .rounded)).foregroundColor(timeRemaining > 5 ? (colorScheme == .dark ? .white: .black ): .red)
                             .onReceive(timer, perform: { _ in
                                 if self.timeRemaining > 0 {
                                     self.timeRemaining -= 1

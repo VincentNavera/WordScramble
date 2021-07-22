@@ -33,7 +33,7 @@ struct ContentView: View {
                         })
                         Spacer()
                         Text("\(timeRemaining)")
-                            .font(.system(size: 50, design: .rounded)).foregroundColor(timeRemaining > 5 ? (colorScheme == .dark ? .white: .black ): .red)
+                            .font(.system(size: 50, design: .rounded)).foregroundColor(timeRemaining > 5 ? .primary: .red)
                             .onReceive(timer, perform: { _ in
                                 if self.timeRemaining > 0 {
                                     self.timeRemaining -= 1
